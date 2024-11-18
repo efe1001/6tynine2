@@ -3,7 +3,7 @@
     width: 80%;  /* Adjust width of the slider */
     margin: 0 auto;
     position: relative;
-    height: 300px;  /* Set fixed height */
+    height: 500px;  /* Set fixed height */
     overflow: hidden;
 }
 
