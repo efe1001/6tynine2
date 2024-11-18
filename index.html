@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Filter</title>
     <link rel="stylesheet" href="styles/font.css">
+    <link rel="stylesheet" href="/styles/slider.css">
     <style>
 body{
     margin: 0;
@@ -45,7 +46,7 @@ header h1 img {
     border-radius: 10px;
     height: 300px;
     border: 1px solid #ddd;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(197, 188, 188, 0.1);
     background-color: #fff;
     transition: transform 0.3s ease;
 }
@@ -58,8 +59,8 @@ header h1 img {
     border-radius: 10px;
 }
 .detail {position: absolute;
-    top:65%;
-   height: 100px;
+    top:70%;
+   height: 50px;
     width: 100%;
     background: rgba(0, 0, 0, 0.6);
     color: white;
@@ -68,13 +69,37 @@ header h1 img {
 }
 .detail p {
     margin: 5px 0;
-    height: 10px;
+    height: 5px;
     font-size: 10px;
 }
 .detail p strong {
     color: #ffd700;
 }
 .detail p {
+    margin: 5px 0;
+}
+
+.detail p strong {
+    color: #ffd700;
+}
+.detail2 {position: absolute;
+    top:75%;
+   height: 50px;
+    width: 100%;
+    background: transparent;
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+.detail2 p {
+    margin: 5px 0;
+    height: 5px;
+    font-size: 10px;
+}
+.detail2 p strong {
+    color: #ffd700;
+}
+.detail2 p {
     margin: 5px 0;
 }
 
@@ -275,47 +300,20 @@ a:hover {
                 <p><a href="#">FAQs</a></p>
             </span>
         </div>
-    </nav>
-
-
-
-
-    <span class="slide-container">
-        <div class="slide-wrapper">
-            <div class="slide">
-                <div id="slide-nav">
-                <img class="slide-1" id="slide-nav1" src="./assets/IMG-20240606-WA0290.jpg"></div>
-            <div class="slide">
-                <div class="slide-2">
-                <img class="slide-1" id="slide-nav2" src="./assets/IMG-20240606-WA0290.jpg"></div>
-            <div class="slide">
-                <div class="slide-3">
-                <img class="slide-1" id="slide-nav3" src="./assets/IMG-20240606-WA0290.jpg"></div>
-            <div class="slide">
-                <div class="slide-4">
-                <img class="slide-1" id="slide-nav4" src="./assets/IMG-20240606-WA0290.jpg"></div>
-                <div class="slide">
-                    <div class="slide-4">
-                    <img class="slide-1" id="slide-nav5" src="./assets/IMG-20240606-WA0290.jpg"></div>
-                    <div class="slide">
-                        <div class="slide-4">
-                        <img class="slide-1" id="slide-nav6" src="./assets/IMG-20240606-WA0290.jpg"></div>
-                        <div class="slide">
-                            <div class="slide-4">
-                            <img class="slide-1" id="slide-nav7" src="./assets/IMG-20240606-WA0290.jpg"></div>
-                            <div class="slide">
-                                <div class="slide-4">
-                                <img class="slide-1" id="slide-nav8" src="./assets/IMG-20240606-WA0290.jpg"></div>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-            </div>
-            </div>
-            </div>
-            </div>
-                   
+    </nav>       
     </span>  
+
+
+
+    <section>
+        <p class="caution">Our esteemed gentlemen, owing to fraudsters making a runner after service, escorts now demand tribute before service. No Exception.</p>
+        <p class="caution">Clients are EXPECTED to provide transportation upfront, after confirming escort with a video call. Please do not hesitate to report any Fraudulent Escort.</p>
+    </section> 
+
+    <div class="sliderpromotion">
+
+    </div>
+   
     <section>
         <p class="caution">Our esteemed gentlemen, owing to fraudsters making a runner after service, escorts now demand tribute before service. No Exception.</p>
         <p class="caution">Clients are EXPECTED to provide transportation upfront, after confirming escort with a video call. Please do not hesitate to report any Fraudulent Escort.</p>
@@ -354,6 +352,30 @@ a:hover {
 
     <!-- Profile Section -->
     <div class="profiledetails">
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <section class="detail">
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Age:</strong> 2</p>
+                <p><strong>Occupation:</strong> Developer</p>
+                <p><strong>Country:</strong> Nigeria</p>
+                <p><strong>State:</strong> Lagos</p>
+                <p><strong>Town:</strong> Ikeja</p>
+          <!--      <p><strong>Gender:</strong> Male</p>-->
+            </section>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <section class="detail">
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Age:</strong> 2</p>
+                <p><strong>Occupation:</strong> Developer</p>
+                <p><strong>Country:</strong> Nigeria</p>
+                <p><strong>State:</strong> Lagos</p>
+                <p><strong>Town:</strong> Ikeja</p>
+          <!--      <p><strong>Gender:</strong> Male</p>-->
+            </section>
+        </div>
         <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
             <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
             <section class="detail">
@@ -652,7 +674,7 @@ a:hover {
         <button id="prevBtn">Previous</button>
         <button id="nextBtn">Next</button>
     </div>
-
+<script src="/slider.js"></script>
     <script src="profile.js"></script>
 
     <!-- JavaScript for Hamburger Menu -->

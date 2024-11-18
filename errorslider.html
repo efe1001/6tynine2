@@ -5,7 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Slider</title>
     <style>
-     
+        /* Slider container */
+        .slide-container {
+            width: 80%;  /* Adjust width of the slider */
+            margin: 0 auto;
+            position: relative;
+            height: 300px;  /* Set fixed height */
+            overflow: hidden;
+        }
+
+        /* Wrapper for all slides */
+        .slide-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        /* Each slide styling */
+        .slide {
+            min-width: calc(16.66% - 10px);  /* 16.66% width minus gap */
+            height: 100%;
+            margin-right: 10px;  /* Gap between images */
+        }
+
+        /* Image styling */
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Navigation buttons */
+        .slider-btn {
+            position: absolute;
+            top: 10%;  /* Move the arrows up to fit within the image */
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+
+        /* Dot navigation (optional) */
+        .dot-container {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: white;
+        }
+
+
+            /* Media Queries for responsiveness */
+            @media (max-width: 1200px) {
+            .slide {
+                min-width: calc(100% / 5 - 10px);  /* Show 5 images on medium screens */
+            }
+        }
 
         @media (max-width: 900px) {
             .slide {
@@ -24,7 +103,6 @@
                 min-width: calc(100% / 2 - 10px);  /* Show 2 images on very small screens */
             }
         }
-        
     </style>
 </head>
 <body>
@@ -32,31 +110,7 @@
     <!-- Slider -->
     <div class="slide-container">
         <div class="slide-wrapper">
-            <div class="slide" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
-                <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
-                <section class="detail2">
-                    <p><strong>Name:</strong> John Doe</p>
-                 <!--   <p><strong>Age:</strong> 2</p>-->
-                 <!---   <p><strong>Occupation:</strong> Developer</p>-->
-                    <p><strong>Country:</strong> Nigeria</p>
-                    <p><strong>State:</strong> Lagos</p>
-                    <p><strong>Town:</strong> Ikeja</p>
-              <!--      <p><strong>Gender:</strong> Male</p>-->
-                </section>
-            </div>
-            <div class="slide" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
-                <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
-                <section class="detail2">
-                    <p><strong>Name:</strong> John Doe</p>
-                <!--    <p><strong>Age:</strong> 2</p>-->
-               <!---     <p><strong>Occupation:</strong> Developer</p>-->
-                    <p><strong>Country:</strong> Nigeria</p>
-                    <p><strong>State:</strong> Lagos</p>
-                    <p><strong>Town:</strong> Ikeja</p>
-              <!--      <p><strong>Gender:</strong> Male</p>-->
-                </section>
-            </div>
-            
+            <div class="slide"><img src="./assets/IMG-20240606-WA0290.jpg" alt="Slide 1"></div>
             <div class="slide"><img src="./assets/IMG-20240606-WA0290.jpg" alt="Slide 2"></div>
             <div class="slide"><img src="./assets/IMG-20240606-WA0290.jpg" alt="Slide 3"></div>
             <div class="slide"><img src="./assets/IMG-20240606-WA0290.jpg" alt="Slide 4"></div>

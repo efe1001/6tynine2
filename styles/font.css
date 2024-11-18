@@ -19,6 +19,7 @@ header{
     width: 100%;
     color: var(--font-olor-bg);
     position: fixed;
+    
 }
 
 .logo{
@@ -248,3 +249,8 @@ select {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+
+
+
+
