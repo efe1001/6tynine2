@@ -19,15 +19,16 @@
 .slide {
     min-width: calc(16.66% - 10px);  /* 16.66% width minus gap */
     height: 100%;
-    margin-right: 10px;  /* Gap between images */
+    margin-right: 110px;  /* Gap between images */
 }
 
 /* Image styling */
-img {
+.slide1 {
     
-    width: 100%;
-    height: 100%;
+    width: 200px;
+    height: 300px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 /* Navigation buttons */
