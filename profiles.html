@@ -5,43 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Display with Filter and Pagination</title>
     <link rel="stylesheet" href="/styles/profile.css">
+    <style>
+        #searchButton {
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#filterSection {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+    </style>
 </head>
 <body>
 
-    <!-- Filter Section -->
-    <div class="filters">
-        <label for="country">Country:</label>
-        <select id="country">
-            <option value="all">All Countries</option>
-            <option value="nigeria">Nigeria</option>
-            <option value="ghana">Ghana</option>
-            <option value="uk">UK</option>
-            <option value="usa">USA</option>
-            <option value="india">India</option>
-            <option value="china">China</option>
-            <option value="spain">Spain</option>
-            <option value="cyprus">Cyprus</option>
-        </select>
-        
-        <label for="state">State:</label>
-        <select id="state">
-            <option value="all">All States</option>
-        </select>
-        
-        <label for="town">Town:</label>
-        <select id="town">
-            <option value="all">All Towns</option>
-        </select>
+<!-- Search Icon Button -->
+<button id="searchButton">
+    <i class="fa fa-search"></i> Search
+</button>
 
-        <label for="gender">Gender:</label>
-        <select id="gender">
-            <option value="all">All Genders</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select>
+<!-- Filter Section -->
+<div class="filters" id="filterSection" style="display:none;">
+    <label for="country">Country:</label>
+    <select id="country">
+        <option value="all">All Countries</option>
+        <option value="nigeria">Nigeria</option>
+        <option value="ghana">Ghana</option>
+        <option value="uk">UK</option>
+        <option value="usa">USA</option>
+        <option value="india">India</option>
+        <option value="china">China</option>
+        <option value="spain">Spain</option>
+        <option value="cyprus">Cyprus</option>
+    </select>
+    
+    <label for="state">State:</label>
+    <select id="state">
+        <option value="all">All States</option>
+    </select>
+    
+    <label for="town">Town:</label>
+    <select id="town">
+        <option value="all">All Towns</option>
+    </select>
 
-        <button id="resetButton">Reset</button>
-    </div>
+    <label for="gender">Gender:</label>
+    <select id="gender">
+        <option value="all">All Genders</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+
+    <button id="resetButton">Reset</button>
+</div>
+
 
     <!-- Profile Container -->
     <div id="profile-container">
@@ -213,6 +233,19 @@
     </div>
 
 </section>
+<script>// Get the search button and filter section
+    const searchButton = document.getElementById("searchButton");
+    const filterSection = document.getElementById("filterSection");
+    
+    // Toggle the filter visibility when search button is clicked
+    searchButton.addEventListener("click", function() {
+        if (filterSection.style.display === "none" || filterSection.style.display === "") {
+            filterSection.style.display = "block";
+        } else {
+            filterSection.style.display = "none";
+        }
+    });
+    </script>
 <script src="profile.js"></script>
 <script src="profiledetails.js"></script>
 
