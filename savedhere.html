@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Filter</title>
+    <link rel="stylesheet" href="styles/font.css">
+    <style>
+/* Basic styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    transition: margin-left 0.3s; /* Transition for page shift */
+}
+
+/* Profile Section */
+.profiledetails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.person {
+    width: 220px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.person img {
+    width: 100%;
+    height: 250px;  /* Increased size for image */
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.person h3 {
+    font-size: 18px;  /* Reduced font size for profile name */
+    margin-top: 10px;
+}
+
+.person p {
+    font-size: 14px;  /* Reduced font size for profile details */
+    margin: 5px 0;
+}
+
+.person:hover {
+    transform: scale(1.05);  /* Slightly enlarge on hover */
+}
+
+.person .short-time-price,
+.person .overnight-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+.person .short-time-price {
+    display: block;
+}
+
+.person .overnight-price {
+    display: block;
+}
+
+/* Filters Section */
+.filters {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.filters select {
+    padding: 10px;
+    margin: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+/* Caution messages */
+.caution, .caution-all {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.caution-all {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Button Styling */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    justify-content: space-between;
+    z-index: 1001;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+}
+
+.hamburger div {
+    width: 100%;
+    height: 5px;
+    background-color: black;
+    transition: all 0.3s ease;
+}
+
+/* Menu styles */
+.menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    background-color: #333;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    height: 100%;
+}
+
+.menu.show {
+    display: block;
+}
+
+.menu p {
+    margin: 10px 0;
+    color: white;
+    font-size: 18px;
+}
+
+.menu p a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu p:hover {
+    background-color: #444;
+}
+
+/* Close button */
+.close-btn {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.hamburger div:hover {
+    background-color: #333;
+}
+
+/* When menu is open */
+.menu.show .close-btn {
+    color: red;
+}
+
+.hamburger.open div:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.open div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open div:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Adjust layout when hamburger menu is open */
+body.menu-open {
+    margin-left: 250px;
+}
+
+.profiledetails.menu-open {
+    margin-left: 250px;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .person {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .person img {
+        height: 200px;  /* Adjust image size for mobile */
+    }
+
+    .filters select {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1><img class="logo" src="./assets/1.2af2e54f9460baf51bef.png" alt="Logo"></h1>
+        <div class="btn3">
+            <a href="#" class="btn1">Submit your profile here</a>
+        </div>
+    </header>
+
+    <!-- Hamburger Menu -->
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu" id="menu">
+            <span class="close-btn" onclick="toggleMenu()">&#10005;</span>
+            <span class="container1" id="grow1">
+                <p><a href="#">Home</a></p>
+                <p><a href="#">Channel</a></p>
+                <p><a href="#">Videos</a></p>
+                <p><a href="#">Rooms</a></p>
+                <p><a href="#">Games</a></p>
+                <p><a href="#">Adverts</a></p>
+                <p><a href="#">Reviews</a></p>
+                <p><a href="#">Events</a></p>
+                <p><a href="#">Blacklisted</a></p>
+                <p><a href="#">Blogs</a></p>
+                <p><a href="#">Testimonies</a></p>
+                <p><a href="#">Feeds</a></p>
+                <p><a href="#">FAQs</a></p>
+            </span>
+        </div>
+    </nav>
+
+
+
+
+
+    <span class="slide-container">
+        <div class="slide-wrapper">
+            <div class="slide">
+                <div id="slide-nav">
+                <img class="slide-1" id="slide-nav1" src="./assets/IMG-20240606-WA0290.jpg"></div>
+            <div class="slide">
+                <div class="slide-2">
+                <img class="slide-1" id="slide-nav2" src="./assets/IMG-20240606-WA0290.jpg"></div>
+            <div class="slide">
+                <div class="slide-3">
+                <img class="slide-1" id="slide-nav3" src="./assets/IMG-20240606-WA0290.jpg"></div>
+            <div class="slide">
+                <div class="slide-4">
+                <img class="slide-1" id="slide-nav4" src="./assets/IMG-20240606-WA0290.jpg"></div>
+                <div class="slide">
+                    <div class="slide-4">
+                    <img class="slide-1" id="slide-nav5" src="./assets/IMG-20240606-WA0290.jpg"></div>
+                    <div class="slide">
+                        <div class="slide-4">
+                        <img class="slide-1" id="slide-nav6" src="./assets/IMG-20240606-WA0290.jpg"></div>
+                        <div class="slide">
+                            <div class="slide-4">
+                            <img class="slide-1" id="slide-nav7" src="./assets/IMG-20240606-WA0290.jpg"></div>
+                            <div class="slide">
+                                <div class="slide-4">
+                                <img class="slide-1" id="slide-nav8" src="./assets/IMG-20240606-WA0290.jpg"></div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+            </div>
+            </div>
+            </div>
+            </div>
+                   
+    </span>  
+    <section>
+        <p class="caution">Our esteemed gentlemen, owing to fraudsters making a runner after service, escorts now demand tribute before service. No Exception.</p>
+        <p class="caution">Clients are EXPECTED to provide transportation upfront, after confirming escort with a video call. Please do not hesitate to report any Fraudulent Escort.</p>
+    </section>
+
+    <h2 class="caution-all">All Escorts</h2>
+
+    <!-- Filters Section -->
+    <div class="filters">
+        <select id="country">
+            <option value="all">All Countries</option>
+            <option value="nigeria">Nigeria</option>
+            <option value="ghana">Ghana</option>
+            <option value="uk">UK</option>
+            <option value="usa">USA</option>
+            <option value="india">India</option>
+            <option value="china">China</option>
+            <option value="spain">Spain</option>
+            <option value="cyprus">Cyprus</option>
+        </select>
+
+        <select id="state">
+            <option value="all">All States</option>
+        </select>
+
+        <select id="town">
+            <option value="all">All Towns</option>
+        </select>
+
+        <select id="gender">
+            <option value="all">All Genders</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profiledetails">
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Abuja</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+            <h3>John Doe</h3>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>State:</strong> Lagos</p>
+            <p><strong>Town:</strong> Ikeja</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Short Time Price:</strong> $200</p>
+            <p><strong>Overnight Price:</strong> $500</p>
+        </div>
+        <!-- Add more profiles here -->
+    </div>
+
+    <!-- Pagination Section -->
+    <div class="pagination">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">Next</a>
+    </div>
+
+    <script>
+        // Toggle Menu
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            const hamburger = document.querySelector(".hamburger");
+            menu.classList.toggle("show");
+            hamburger.classList.toggle("open");
+            document.body.classList.toggle("menu-open");
+        }
+
+        // Filter profiles based on selected options
+        function filterProfiles() {
+            const country = document.getElementById('country').value;
+            const state = document.getElementById('state').value;
+            const town = document.getElementById('town').value;
+            const gender = document.getElementById('gender').value;
+            const profiles = document.querySelectorAll('.person');
+
+            let visibleProfiles = 0;
+            
+            profiles.forEach(profile => {
+                const profileCountry = profile.getAttribute('data-country');
+                const profileState = profile.getAttribute('data-state');
+                const profileTown = profile.getAttribute('data-town');
+                const profileGender = profile.getAttribute('data-gender');
+
+                if ((country === 'all' || profileCountry === country) &&
+                    (state === 'all' || profileState === state) &&
+                    (town === 'all' || profileTown === town) &&
+                    (gender === 'all' || profileGender === gender)) {
+                    profile.style.display = 'block';
+                    visibleProfiles++;
+                } else {
+                    profile.style.display = 'none';
+                }
+            });
+
+            // Display pagination based on visible profiles
+            if (visibleProfiles === 0) {
+                document.querySelector('.pagination').style.display = 'none';
+            } else {
+                document.querySelector('.pagination').style.display = 'block';
+            }
+        }
+
+        // Event listeners for the filters
+        document.getElementById('country').addEventListener('change', filterProfiles);
+        document.getElementById('state').addEventListener('change', filterProfiles);
+        document.getElementById('town').addEventListener('change', filterProfiles);
+        document.getElementById('gender').addEventListener('change', filterProfiles);
+
+        // Initialize filter on page load
+        filterProfiles();
+    </script>
+</body>
+</html>

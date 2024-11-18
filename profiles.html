@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Display with Filter and Pagination</title>
+    <link rel="stylesheet" href="/styles/profile.css">
+</head>
+<body>
+
+    <!-- Filter Section -->
+    <div class="filters">
+        <label for="country">Country:</label>
+        <select id="country">
+            <option value="all">All Countries</option>
+            <option value="nigeria">Nigeria</option>
+            <option value="ghana">Ghana</option>
+            <option value="uk">UK</option>
+            <option value="usa">USA</option>
+            <option value="india">India</option>
+            <option value="china">China</option>
+            <option value="spain">Spain</option>
+            <option value="cyprus">Cyprus</option>
+        </select>
+        
+        <label for="state">State:</label>
+        <select id="state">
+            <option value="all">All States</option>
+        </select>
+        
+        <label for="town">Town:</label>
+        <select id="town">
+            <option value="all">All Towns</option>
+        </select>
+
+        <label for="gender">Gender:</label>
+        <select id="gender">
+            <option value="all">All Genders</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        <button id="resetButton">Reset</button>
+    </div>
+
+    <!-- Profile Container -->
+    <div id="profile-container">
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
+            <img src="/assets/WhatsApp Image 2023-02-07 at 3.13.28 PM.05ae0bd85b3440cc1c79.jpeg" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Age:</strong> 2</p>
+                <p><strong>Occupation:</strong> Developer</p>
+                <p><strong>Country:</strong> Nigeria</p>
+                <p><strong>State:</strong> Lagos</p>
+                <p><strong>Town:</strong> Ikeja</p>
+                <p><strong>Gender:</strong> Male</p>
+            </div>
+        </div>
+
+        <div class="person" data-country="ghana" data-state="accra" data-town="madina" data-gender="female">
+            <img src="/assets/IMG-20240610-WA1105.jpg" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> Sarah Connor</p>
+                <p><strong>Age:</strong> 3</p>
+                <p><strong>Occupation:</strong> Designer</p>
+                <p><strong>Country:</strong> Ghana</p>
+                <p><strong>State:</strong> Accra</p>
+                <p><strong>Town:</strong> Madina</p>
+                <p><strong>Gender:</strong> Female</p>
+            </div>
+        </div>
+        <div class="person" data-country="ghana" data-state="accra" data-town="madina" data-gender="female">
+            <img src="https://via.placeholder.com/300" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> Sarah Connor</p>
+                <p><strong>Age:</strong> 34</p>
+                <p><strong>Occupation:</strong> Designer</p>
+                <p><strong>Country:</strong> Ghana</p>
+                <p><strong>State:</strong> Accra</p>
+                <p><strong>Town:</strong> Madina</p>
+                <p><strong>Gender:</strong> Female</p>
+            </div>
+        </div>
+        <div class="person" data-country="ghana" data-state="accra" data-town="madina" data-gender="female">
+            <img src="https://via.placeholder.com/300" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> Sarah Connor</p>
+                <p><strong>Age:</strong> 3</p>
+                <p><strong>Occupation:</strong> Designer</p>
+                <p><strong>Country:</strong> Ghana</p>
+                <p><strong>State:</strong> Accra</p>
+                <p><strong>Town:</strong> Madina</p>
+                <p><strong>Gender:</strong> Female</p>
+            </div>
+        </div>
+        <div class="person" data-country="ghana" data-state="accra" data-town="madina" data-gender="female">
+            <img src="https://via.placeholder.com/300" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> Sarah Connor</p>
+                <p><strong>Age:</strong> 32</p>
+                <p><strong>Occupation:</strong> Designer</p>
+                <p><strong>Country:</strong> Ghana</p>
+                <p><strong>State:</strong> Accra</p>
+                <p><strong>Town:</strong> Madina</p>
+                <p><strong>Gender:</strong> Female</p>
+            </div>
+        </div>
+        <div class="person" data-country="ghana" data-state="accra" data-town="madina" data-gender="female">
+            <img src="https://via.placeholder.com/300" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> Sarah Connor</p>
+                <p><strong>Age:</strong> 32</p>
+                <p><strong>Occupation:</strong> Designer</p>
+                <p><strong>Country:</strong> Ghana</p>
+                <p><strong>State:</strong> Accra</p>
+                <p><strong>Town:</strong> Madina</p>
+                <p><strong>Gender:</strong> Female</p>
+            </div>
+        </div>
+        <div class="person" data-country="ghana" data-state="accra" data-town="madina" data-gender="female">
+            <img src="https://via.placeholder.com/300" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> Sarah Connor</p>
+                <p><strong>Age:</strong> 32</p>
+                <p><strong>Occupation:</strong> Designer</p>
+                <p><strong>Country:</strong> Ghana</p>
+                <p><strong>State:</strong> Accra</p>
+                <p><strong>Town:</strong> Madina</p>
+                <p><strong>Gender:</strong> Female</p>
+            </div>
+        </div>
+        <div class="person" data-country="ghana" data-state="accra" data-town="madina" data-gender="female">
+            <img src="https://via.placeholder.com/300" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> Sarah Connor</p>
+                <p><strong>Age:</strong> 32</p>
+                <p><strong>Occupation:</strong> Designer</p>
+                <p><strong>Country:</strong> Ghana</p>
+                <p><strong>State:</strong> Accra</p>
+                <p><strong>Town:</strong> Madina</p>
+                <p><strong>Gender:</strong> Female</p>
+            </div>
+        </div>
+        <div class="person" data-country="ghana" data-state="accra" data-town="madina" data-gender="female">
+            <img src="https://via.placeholder.com/300" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> Sarah Connor</p>
+                <p><strong>Age:</strong> 32</p>
+                <p><strong>Occupation:</strong> Designer</p>
+                <p><strong>Country:</strong> Ghana</p>
+                <p><strong>State:</strong> Accra</p>
+                <p><strong>Town:</strong> Madina</p>
+                <p><strong>Gender:</strong> Female</p>
+            </div>
+        </div>
+        <div class="person" data-country="ghana" data-state="accra" data-town="madina" data-gender="female">
+            <img src="https://via.placeholder.com/300" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> Sarah Connor</p>
+                <p><strong>Age:</strong> 32</p>
+                <p><strong>Occupation:</strong> Designer</p>
+                <p><strong>Country:</strong> Ghana</p>
+                <p><strong>State:</strong> Accra</p>
+                <p><strong>Town:</strong> Madina</p>
+                <p><strong>Gender:</strong> Female</p>
+            </div>
+        </div>
+        <div class="person" data-country="ghana" data-state="accra" data-town="madina" data-gender="female">
+            <img src="https://via.placeholder.com/300" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> Sarah Connor</p>
+                <p><strong>Age:</strong> 32</p>
+                <p><strong>Occupation:</strong> Designer</p>
+                <p><strong>Country:</strong> Ghana</p>
+                <p><strong>State:</strong> Accra</p>
+                <p><strong>Town:</strong> Madina</p>
+                <p><strong>Gender:</strong> Female</p>
+            </div>
+        </div>
+        <div class="person" data-country="ghana" data-state="accra" data-town="madina" data-gender="female">
+            <img src="https://via.placeholder.com/300" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> Sarah Connor</p>
+                <p><strong>Age:</strong> 32</p>
+                <p><strong>Occupation:</strong> Designer</p>
+                <p><strong>Country:</strong> Ghana</p>
+                <p><strong>State:</strong> Accra</p>
+                <p><strong>Town:</strong> Madina</p>
+                <p><strong>Gender:</strong> Female</p>
+            </div>
+        </div>
+
+        <div class="person" data-country="uk" data-state="london" data-town="soho" data-gender="male">
+            <img src="https://via.placeholder.com/300" alt="Profile Image">
+            <div class="details">
+                <p><strong>Name:</strong> James Bond</p>
+                <p><strong>Age:</strong> 40</p>
+                <p><strong>Occupation:</strong> Spy</p>
+                <p><strong>Country:</strong> UK</p>
+                <p><strong>State:</strong> London</p>
+                <p><strong>Town:</strong> Soho</p>
+                <p><strong>Gender:</strong> Male</p>
+            </div>
+        </div>
+        <!-- More profiles can be added here -->
+    </div>
+
+    <!-- Pagination Section -->
+    <div class="pagination">
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+    </div>
+
+</section>
+<script src="profile.js"></script>
+<script src="profiledetails.js"></script>
+
+</body>
+</html>

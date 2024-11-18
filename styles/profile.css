@@ -1,0 +1,120 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 10%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filters label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.filters select {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f1f1f1;
+    width: 180px;
+    cursor: pointer;
+}
+
+.filters select:hover {
+    background-color: #e9ecef;
+}
+
+#profile-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin: 0 10%;
+    padding: 20px 0;
+}
+
+.person {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.person img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.details p {
+    margin: 5px 0;
+}
+
+.details p strong {
+    color: #ffd700;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.pagination button:hover {
+    background-color: #0056b3;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    #profile-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    #profile-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    #profile-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+}
