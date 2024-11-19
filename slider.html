@@ -116,6 +116,18 @@
                 <!--      <p><strong>Gender:</strong> Male</p>-->
                   </section>
               </div>
+            <div class="slide" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="female">
+                <a href="/ladiesprofiles/goddess.html">  <img class="slide1" src="/assets/ladiespic/goddess2.png" alt="excel"></a>
+                  <section class="detail2">
+                      <p><strong>Name:</strong> Goddess</p>
+                        <!--    <p><strong>Age:</strong> 2</p>-->
+               <!---     <p><strong>Occupation:</strong> Developer</p>-->
+                      <p><strong>Country:</strong> Nigeria</p>
+                      <p><strong>State:</strong> Lagos</p>
+                      <p><strong>Town:</strong> Ikeja</p>
+                <!--      <p><strong>Gender:</strong> Male</p>-->
+                  </section>
+              </div>
             <div class="slide" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
                 <img class="slide1" src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
                 <section class="detail2">
@@ -176,7 +188,7 @@
 
         // Function to create dot indicators
         function createDots() {
-            for (let i = 0; i < totalSlides - 1; i++) {  // Show dots for 10 slides, but only move through 6
+            for (let i = 0; i < totalSlides - 2; i++) {  // Show dots for 10 slides, but only move through 6
                 const dot = document.createElement('div');
                 dot.classList.add('dot');
                 dot.addEventListener('click', () => {
@@ -196,7 +208,7 @@
 
         // Function to move to the previous slide
         function prevSlide() {
-            currentSlide = (currentSlide - 1 + (totalSlides - 5)) % (totalSlides - 5); // Adjust for looping
+            currentSlide = (currentSlide - 1 + (totalSlides - 1)) % (totalSlides - 5); // Adjust for looping
             showSlide(currentSlide);
         }
 
