@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/font.css">
+</head>
+<body>
+    <nav class="headerbar">
+        <header>
+           <a href="/index.html"> <h1><img class="logo" src="/assets/1.2af2e54f9460baf51bef.png" alt="Logo"></h1></a>
+            <div class="btn3">
+                <a href="/uploadprofile.html" class="btn1">Submit your profile here</a>
+            </div>
+        </header>
+    
+        <!-- Hamburger Menu -->
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="menu" id="menu">
+                <span class="close-btn" onclick="toggleMenu()">&#10005;</span> <!-- Red "X" -->
+                <span class="container1" id="grow1">
+                    <p><a href="#">Home</a></p>
+                    <p><a href="#">Channel</a></p>
+                    <p><a href="#">Videos</a></p>
+                    <p><a href="#">Rooms</a></p>
+                    <p><a href="#">Games</a></p>
+                    <p><a href="#">Adverts</a></p>
+                    <p><a href="#">Reviews</a></p>
+                    <p><a href="#">Events</a></p>
+                    <p><a href="#">Blacklisted</a></p>
+                    <p><a href="#">Blogs</a></p>
+                    <p><a href="#">Testimonies</a></p>
+                    <p><a href="#">Feeds</a></p>
+                    <p><a href="#">FAQs</a></p>
+                </span>
+            </div> 
+    </nav>
+    <script>
+        function toggleMenu() {
+            // Toggle the class to show/hide the menu
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+            
+            // Toggle hamburger animation
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.classList.toggle('open');
+
+            // Adjust the page layout when the menu is open
+            const body = document.body;
+            const profileDetails = document.querySelector('.profiledetails');
+            body.classList.toggle('menu-open');
+            profileDetails.classList.toggle('menu-open');
+        }
+    </script>
+</body>
+</html>

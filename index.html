@@ -7,315 +7,50 @@
     <link rel="stylesheet" href="styles/font.css">
     <link rel="stylesheet" href="/styles/slider.css">
     <style>
-body{
-    margin: 0;
-    background-color: #333;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    transition: margin-left 0.3s; /* Transition for page shift */
-}
-
-#searchButton {
-    font-size: 16px;
-    padding: 10px;
-    cursor: pointer;
-}
-
-#filterSection {
-    margin-top: 20px;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-}
-
-
-header h1 img {
-    width: 150px;
-}
-
-.btn1 {
-    text-decoration: none;
-    color: white;
-    background-color: blue;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.btn3 {
-    margin-top: 10px;
-}
-
-/* Profile Section */
-.profiledetails {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    margin: 20px;
-}
-
-.person {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    height: 300px;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 6px rgba(197, 188, 188, 0.1);
-    background-color: #fff;
-    transition: transform 0.3s ease;
-}
-
-
-.person img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-.detail {position: absolute;
-    top:70%;
-   height: 50px;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 15px;
-    text-align: left;
-}
-.detail p {
-    margin: 5px 0;
-    height: 5px;
-    font-size: 10px;
-}
-.detail p strong {
-    color: #ffd700;
-}
-.detail p {
-    margin: 5px 0;
-}
-
-.detail p strong {
-    color: #ffd700;
-}
-.detail2 {position: absolute;
-    top:75%;
-   height: 50px;
-    width: 100%;
-    background: transparent;
-    color: white;
-    padding: 15px;
-    text-align: left;
-}
-.detail2 p {
-    margin: 5px 0;
-    height: 5px;
-    font-size: 10px;
-}
-.detail2 p strong {
-    color: #ffd700;
-}
-.detail2 p {
-    margin: 5px 0;
-}
-
-.detail p strong {
-    color: #ffd700;
-}
-.person:hover {
-    transform: translateY(-10px); /* Add hover effect */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Filters Section */
-.filters {
-    margin: 20px 0;
-    text-align: center;
-}
-
-.filters select {
-    padding: 10px;
-    margin-right: 15px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.caution {
-    color: red;
-    font-size: 14px;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.caution-all {
-    text-align: center;
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Hamburger Menu styles */
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    justify-content: space-between;
-    z-index: 1001;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background-color: transparent; /* Make sure background is transparent */
-}
-
-.hamburger div {
-    width: 100%;
-    height: 5px;
-    background-color: black;
-    transition: all 0.3s ease;
-}
-
-/* Menu styles */
-.menu {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    background-color: #333;
-    padding: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    height: 100%; /* Ensure menu takes full height */
-}
-
-.menu.show {
-    display: block;
-}
-
-.menu p {
-    margin: 10px 0;
-    color: white;
-    font-size: 18px;
-}
-
-.menu p a {
-    color: white;
-    text-decoration: none;
-}
-
-/* Close button */
-.close-btn {
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-    display: block;
-    text-align: right;
-    margin-top: 10px;
-}
-
-.hamburger div:hover {
-    background-color: #333; /* Change color of bars when hovered */
-}
-
-/* When menu is open */
-.menu.show .close-btn {
-    color: red; /* Red "X" button when menu is open */
-}
-
-/* Style changes to hamburger when menu is open */
-.hamburger.open div:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
-}
-
-.hamburger.open div:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.open div:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
-}
-
-.menu p:hover {
-    background-color: #444;
-}
-
-/* Adjust layout when hamburger menu is open */
-body.menu-open {
-    margin-left: 20px; /* Shift body to the right when menu is open */
-}
-
-.profiledetails.menu-open {
-    margin-left: 250px; /* Shift content to the right when menu is open */
-}
-
-/* Navigation Section */
-nav {
-    position: relative;
-}
-
-/* Button styling */
-button {
-    padding: 10px;
-    margin: 10px;
-    cursor: pointer;
-    background-color: blue;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: darkblue;
-}
-
-/* Other Global Styles */
-a {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
 
 
     </style>
 </head>
 <body>
-    <header>
-        <h1><img class="logo" src="./assets/1.2af2e54f9460baf51bef.png" alt="Logo"></h1>
-        <div class="btn3">
-            <a href="/uploadprofile.html" class="btn1">Submit your profile here</a>
-        </div>
-    </header>
+    <section class="headerbar">
+        <header>
+           <div class="btn01"><a href="/uploadprofile.html" class="btn1">Submit your profile here</a></div>
+        <h1> <a href="/index.html">  <img class="logo" src="./assets/1.2af2e54f9460baf51bef.png" alt="Logo"></a></h1>
+            <div class="btn3">
+             
+            </div>
+        </header>
+    
+        <!-- Hamburger Menu -->
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="menu" id="menu">
+                <span class="close-btn" onclick="toggleMenu()">&#10005;</span> <!-- Red "X" -->
+                <span class="container1" id="grow1">
+                    <p><a href="#">Home</a></p>
+                    <p><a href="#">Channel</a></p>
+                    <p><a href="#">Videos</a></p>
+                    <p><a href="#">Rooms</a></p>
+                    <p><a href="#">Games</a></p>
+                    <p><a href="#">Adverts</a></p>
+                    <p><a href="#">Reviews</a></p>
+                    <p><a href="#">Events</a></p>
+                    <p><a href="#">Blacklisted</a></p>
+                    <p><a href="#">Blogs</a></p>
+                    <p><a href="#">Testimonies</a></p>
+                    <p><a href="#">Feeds</a></p>
+                    <p><a href="#">FAQs</a></p>
+                </span>
+            </div>
+        </nav>       
+        </span>  
+    </section>
 
-    <!-- Hamburger Menu -->
-    <nav>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="menu" id="menu">
-            <span class="close-btn" onclick="toggleMenu()">&#10005;</span> <!-- Red "X" -->
-            <span class="container1" id="grow1">
-                <p><a href="#">Home</a></p>
-                <p><a href="#">Channel</a></p>
-                <p><a href="#">Videos</a></p>
-                <p><a href="#">Rooms</a></p>
-                <p><a href="#">Games</a></p>
-                <p><a href="#">Adverts</a></p>
-                <p><a href="#">Reviews</a></p>
-                <p><a href="#">Events</a></p>
-                <p><a href="#">Blacklisted</a></p>
-                <p><a href="#">Blogs</a></p>
-                <p><a href="#">Testimonies</a></p>
-                <p><a href="#">Feeds</a></p>
-                <p><a href="#">FAQs</a></p>
-            </span>
-        </div>
-    </nav>       
-    </span>  
-
+   
 
 
     <section>
@@ -401,15 +136,39 @@ a:hover {
           <!--      <p><strong>Gender:</strong> Male</p>-->
             </section>
         </div>
-        <div class="person" data-country="nigeria" data-state="lagos" data-town="ikeja" data-gender="male">
-            <img src="./assets/IMG-20240606-WA0290.jpg" alt="John's image">
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="lekki" data-gender="female">
+          <a href="/ladiesprofiles/analgirl.html">  <img src="/assets/ladiespic/anal girl 1.jpeg" alt="Anal girl"></a>
             <section class="detail">
-                <p><strong>Name:</strong> John Doe</p>
-                <p><strong>Age:</strong> 2</p>
-                <p><strong>Occupation:</strong> Developer</p>
+                <p><strong>Name:</strong> Anal girl</p>
+                <p><strong>Age:</strong> 27</p>
+               <!-- <p><strong>Occupation:</strong> </p>-->
                 <p><strong>Country:</strong> Nigeria</p>
                 <p><strong>State:</strong> Lagos</p>
-                <p><strong>Town:</strong> Ikeja</p>
+                <p><strong>Town:</strong> Lekki</p>
+          <!--      <p><strong>Gender:</strong> Male</p>-->
+            </section>
+        </div>
+        <div class="person" data-country="nigeria" data-state="abuja" data-town="gwarinpa" data-gender="female">
+          <a href="/ladiesprofiles/ivaa.html">  <img src="/assets/ladiespic/ivaa1.png" alt="ivaa"></a>
+            <section class="detail">
+                <p><strong>Name:</strong>ivall</p>
+                <p><strong>Age:</strong> 23</p>
+               <!-- <p><strong>Occupation:</strong> </p>-->
+                <p><strong>Country:</strong> Nigeria</p>
+                <p><strong>State:</strong> Abuja</p>
+                <p><strong>Town:</strong> Gwarinpa</p>
+          <!--      <p><strong>Gender:</strong> Male</p>-->
+            </section>
+        </div>
+        <div class="person" data-country="nigeria" data-state="lagos" data-town="lekki" data-gender="female">
+          <a href="/ladiesprofiles/wealth.html">  <img src="/assets/ladiespic/wealth1.png" alt="wealth"></a>
+            <section class="detail">
+                <p><strong>Name:</strong> wealth</p>
+                <p><strong>Age:</strong> 23</p>
+               <!-- <p><strong>Occupation:</strong> </p>-->
+                <p><strong>Country:</strong> Nigeria</p>
+                <p><strong>State:</strong> Lagos</p>
+                <p><strong>Town:</strong> Lekki</p>
           <!--      <p><strong>Gender:</strong> Male</p>-->
             </section>
         </div>
