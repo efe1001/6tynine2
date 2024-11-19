@@ -300,7 +300,29 @@ a:hover {
     text-decoration: underline;
 }
 
-
+ /* WhatsApp Button Styling */
+ .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+  }
+  .whatsapp-float:hover {
+    background-color: #22b05b;
+  }
+  .whatsapp-float i {
+    font-size: 28px;
+  }
 
 
 
