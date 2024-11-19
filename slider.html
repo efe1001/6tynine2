@@ -176,7 +176,7 @@
 
         // Function to create dot indicators
         function createDots() {
-            for (let i = 0; i < totalSlides - 5; i++) {  // Show dots for 10 slides, but only move through 6
+            for (let i = 0; i < totalSlides - 1; i++) {  // Show dots for 10 slides, but only move through 6
                 const dot = document.createElement('div');
                 dot.classList.add('dot');
                 dot.addEventListener('click', () => {
