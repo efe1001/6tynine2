@@ -329,7 +329,7 @@ a:hover {
 /*--button*/
 .slideall{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around;flex-wrap: wrap;
 }
 .btn1{
     display: flex;
