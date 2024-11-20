@@ -329,14 +329,16 @@ a:hover {
 /*--button*/
 .slideall{
     display: flex;
-    justify-content: space-around;flex-wrap: wrap;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  
 }
 .btn1{
     display: flex;
    justify-content: left;
 background:transparent;
 font-size: 15px;
-width: 190px;
+width: 120px;
 padding: 5px;
 text-decoration: none;
 text-align: center;
