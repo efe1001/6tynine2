@@ -15,13 +15,13 @@
 
         @media (max-width: 600px) {
             .slide {
-                min-width: calc(100% / 3 - 10px);  /* Show 3 images on mobile screens */
+                min-width: calc(40% / 1 - 10px);  /* Show 3 images on mobile screens */
             }
         }
 
         @media (max-width: 300px) {
             .slide {
-                min-width: calc(100% / 2 - 10px);  /* Show 2 images on very small screens */
+                min-width: calc(50% / 2 - 10px);  /* Show 2 images on very small screens */
             }
         }
         
@@ -223,7 +223,7 @@
     </div>
 
     <script>
-        let currentSlide = 0;
+        let currentSlide = 1;
         const slides = document.querySelectorAll('.slide');
         const slideWrapper = document.querySelector('.slide-wrapper');
         const prevBtn = document.querySelector('.prev-btn');
@@ -233,7 +233,7 @@
 
         // Function to show the current slide
         function showSlide(index) {
-            const offset = index * (16.66 + 60);  // Adjust for gap (16.66% + 10px gap)
+            const offset = index * (16.66 + 20);  // Adjust for gap (16.66% + 10px gap)
             slideWrapper.style.transform = `translateX(-${offset}%)`;
 
             // Update the dots
