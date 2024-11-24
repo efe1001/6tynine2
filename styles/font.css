@@ -132,6 +132,9 @@ header h1 img {
     height: 5px;
     font-size: 10px;
 }
+.no{
+    color: white;
+}
 .detail2 p strong {
     color: #ffd700;
 }
