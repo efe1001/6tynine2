@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Listing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+        }
+        .property-details {
+            margin: 20px 0;
+        }
+        #contactForm, #reviewSection {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea, button {
+            width: 100%;
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        img {
+            max-width: 200px;
+            height: auto;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+       
+        <a href="/index.html"> <h1><img src="/assets/1.2af2e54f9460baf51bef.png"></h1></a>
+
+    <section class="property-details">
+        <button id="contactButton">CLICK HERE TO FILL FORM</button>
+
+        <div id="contactForm" style="display: none;">
+            <h3>Contact Form</h3>
+            <form id="contactFormSubmit" enctype="multipart/form-data">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required><br>
+
+                <label for="phone">Your Phone Number:</label>
+                <input type="tel" id="phone" required><br>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" required><br>
+
+                <label for="age">Your Age:</label>
+                <input type="number" id="age" required><br>
+
+                <label for="weight">Your Weight:</label>
+                <input type="number" id="weight" required><br>
+
+                <label for="height">Your Height:</label>
+                <input type="number" id="height" required><br>
+
+                <label for="about">About:</label><br>
+                <textarea id="about" required></textarea><br>
+
+                <label for="country">country, state and Town:</label><br>
+                <textarea id="timeline" required></textarea><br>
+
+                <label for="reviews">state your charges short/night/weekend:</label><br>
+                <textarea id="reviews" required></textarea><br>
+
+                <label for="image1">Upload Image 1:</label><br>
+                <input type="file" id="image1" accept="image/*"><br><br>
+
+                <label for="image2">Upload Image 2:</label><br>
+                <input type="file" id="image2" accept="image/*"><br><br>
+
+                <label for="image3">Upload Image 3:</label><br>
+                <input type="file" id="image3" accept="image/*"><br><br>
+
+                <label for="image4">Upload Image 4:</label><br>
+                <input type="file" id="image4" accept="image/*"><br><br>
+
+                <label for="image5">Upload Image 5:</label><br>
+                <input type="file" id="image5" accept="image/*"><br><br>
+
+                <button type="button" id="reviewButton">Review Information</button>
+            </form>
+        </div>
+
+        <div id="reviewSection" style="display: none;">
+            <h3>Review Your Information</h3>
+            <p><strong>Name:</strong> <span id="reviewName"></span></p>
+            <p><strong>Phone:</strong> <span id="reviewPhone"></span></p>
+            <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
+            <p><strong>Age:</strong> <span id="reviewAge"></span></p>
+            <p><strong>Weight:</strong> <span id="reviewWeight"></span></p>
+            <p><strong>Height:</strong> <span id="reviewHeight"></span></p>
+            <p><strong>About:</strong> <span id="reviewAbout"></span></p>
+            <p><strong>country/state/town:</strong> <span id="reviewTimeline"></span></p>
+            <p><strong>state your charges short/night/weekend:</strong> <span id="reviewReviews"></span></p>
+            <p><strong>Uploaded Images:</strong><br>
+                <span id="reviewImages"></span>
+            </p>
+
+            <button type="button" id="editButton">Edit Information</button>
+            <button type="button" id="submitButton">Confirm and Send</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 6tynine</p>
+    </footer>
+    <script src="/headerbar.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+          //  emailjs.init("JPCsCvS3PDJYonZrQ"); // Your EmailJS public user ID
+            emailjs.init("E_uNpjJa5v3wPuyba"); // Your EmailJS public user ID
+        })();
+
+        document.getElementById("contactButton").addEventListener("click", function() {
+            const contactForm = document.getElementById("contactForm");
+            contactForm.style.display = contactForm.style.display === "none" ? "block" : "none";
+        });
+
+        document.getElementById("reviewButton").addEventListener("click", function() {
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const email = document.getElementById("email").value;
+            const age = document.getElementById("age").value;
+            const weight = document.getElementById("weight").value;
+            const height = document.getElementById("height").value;
+            const about = document.getElementById("about").value;
+            const timeline = document.getElementById("timeline").value;
+            const reviews = document.getElementById("reviews").value;
+            const imageFiles = [
+                document.getElementById("image1").files[0],
+                document.getElementById("image2").files[0],
+                document.getElementById("image3").files[0],
+                document.getElementById("image4").files[0],
+                document.getElementById("image5").files[0]
+            ];
+
+            // Display user information for review
+            document.getElementById("reviewName").innerText = name;
+            document.getElementById("reviewPhone").innerText = phone;
+            document.getElementById("reviewEmail").innerText = email;
+            document.getElementById("reviewAge").innerText = age;
+            document.getElementById("reviewWeight").innerText = weight;
+            document.getElementById("reviewHeight").innerText = height;
+            document.getElementById("reviewAbout").innerText = about;
+            document.getElementById("reviewTimeline").innerText = timeline;
+            document.getElementById("reviewReviews").innerText = reviews;
+
+            // Preview images
+            const imageUrls = imageFiles.map(file => {
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById("reviewImages").innerHTML += `<img src="${e.target.result}" alt="Image Preview" style="max-width: 200px; height: auto; margin-top: 10px;">`;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            document.getElementById("contactForm").style.display = "none";
+            document.getElementById("reviewSection").style.display = "block";
+        });
+
+        document.getElementById("editButton").addEventListener("click", function() {
+            document.getElementById("contactForm").style.display = "block";
+            document.getElementById("reviewSection").style.display = "none";
+        });
+
+        document.getElementById("submitButton").addEventListener("click", function() {
+            const formData = new FormData();
+            const imageFiles = [
+                document.getElementById("image1").files[0],
+                document.getElementById("image2").files[0],
+                document.getElementById("image3").files[0],
+                document.getElementById("image4").files[0],
+                document.getElementById("image5").files[0]
+            ];
+
+            imageFiles.forEach((imageFile, index) => {
+                if (imageFile) {
+                    formData.append(`image${index + 1}`, imageFile);
+                }
+            });
+
+            const uploadImages = async () => {
+                try {
+                    const uploadPromises = imageFiles.map((imageFile, index) => {
+                        if (imageFile) {
+                            const formDataForImageUpload = new FormData();
+                            formDataForImageUpload.append("image", imageFile);
+                            return fetch("https://api.imgbb.com/1/upload?key=22a7d422a10d669b21e05d7e74fa4029", {
+                                method: "POST",
+                                body: formDataForImageUpload
+                            }).then(response => response.json());
+                        }
+                    });
+
+                    const uploadResults = await Promise.all(uploadPromises);
+
+                    // Log the upload results to check if images are uploaded correctly
+                    console.log("Upload Results:", uploadResults);
+
+                    const imageUrls = uploadResults.map(result => result ? result.data.url : 'Not uploaded');
+                    console.log("Image URLs:", imageUrls);
+
+                    // Log the email data before sending
+                    const emailData = {
+                        to_name: "Real Estate Agent",
+                        from_name: document.getElementById("name").value,
+                        from_email: document.getElementById("email").value,
+                        from_phone: document.getElementById("phone").value,
+                        age: document.getElementById("age").value,
+                        weight: document.getElementById("weight").value,
+                        height: document.getElementById("height").value,
+                        about: document.getElementById("about").value,
+                        timeline: document.getElementById("timeline").value,
+                        reviews: document.getElementById("reviews").value,
+                        image_urls: imageUrls.join(", ") // Ensure this matches the template variable name
+                    };
+
+                    console.log("Sending email with data:", emailData);
+
+                    // Send email with image URLs
+                   // emailjs.send("service_2tbngbe", "template_hkeirhf", emailData)
+                    emailjs.send("service_aenm78i", "template_lx4p3qw", emailData)
+                        .then(function (response) {
+                            console.log("Email sent successfully:", response);
+                            alert("Message sent successfully!");
+                            document.getElementById("contactFormSubmit").reset();
+                            document.getElementById("contactForm").style.display = "none";
+                            document.getElementById("reviewSection").style.display = "none";
+                        })
+                        .catch(function (error) {
+                            console.error("Error sending email:", error);
+                            alert("Failed to send message.");
+                        });
+                } catch (error) {
+                    console.error("Error uploading images:", error);
+                    alert("An error occurred during image upload.");
+                }
+            };
+
+            uploadImages();
+        });
+    </script>
+</body>
+</html>
