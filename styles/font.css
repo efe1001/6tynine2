@@ -21,7 +21,18 @@ header{
     position: fixed;
     
 }
-
+.premium1{
+    padding: 5px;
+    width: 100%;
+    justify-content: center;
+    height: 100px;
+    border-radius: 20px;
+}
+.premium11{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 .logo{
     width: 200px;
     margin-left: 100px;
