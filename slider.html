@@ -330,39 +330,35 @@
     </div>
 
     <script>
-      let currentSlide = 1;
+      let currentSlide = 0;
       const slides = document.querySelectorAll('.slide');
       const slideWrapper = document.querySelector('.slide-wrapper');
-      const prevBtn = document.querySelector('.prev-btn');
-      const nextBtn = document.querySelector('.next-btn');
       const dotContainer = document.querySelector('.dot-container');
       const totalSlides = slides.length;
   
-      let isDragging = false; // To track if a drag/swipe is happening
-      let startX = 0;         // Starting X position
-      let currentTranslate = 0; // Current translate value
-      let prevTranslate = 0;  // Previous translate value
-      let animationId;        // RequestAnimationFrame ID
-      let activeIndex = currentSlide;
+      let isDragging = false;
+      let startX = 0;
+      let currentTranslate = 0;
+      let prevTranslate = 0;
+      let animationId;
   
-      // Function to show the current slide
-      function showSlide(index) {
-          activeIndex = index;
-          const offset = index * (100 / totalSlides); // Adjust for percentage width
-          slideWrapper.style.transition = "transform 0.3s ease-in-out";
-          slideWrapper.style.transform = `translateX(-${offset}%)`;
-  
-          // Update the dots
-          const dots = dotContainer.querySelectorAll('.dot');
-          dots.forEach((dot, i) => {
-              dot.classList.remove('active');
-              if (i === index) {
-                  dot.classList.add('active');
-              }
-          });
+      // Initialize carousel
+      function initCarousel() {
+          createDots();
+          updateDots(currentSlide);
+          showSlide(currentSlide);
       }
   
-      // Function to create dot indicators
+      // Function to show a slide
+      function showSlide(index) {
+          const slideWidth = slideWrapper.offsetWidth; // Get the width dynamically
+          const offset = index * slideWidth;
+          slideWrapper.style.transition = "transform 0.3s ease-in-out";
+          slideWrapper.style.transform = `translateX(-${offset}px)`;
+          updateDots(index);
+      }
+  
+      // Create dot indicators
       function createDots() {
           for (let i = 0; i < totalSlides; i++) {
               const dot = document.createElement('div');
@@ -373,62 +369,62 @@
               });
               dotContainer.appendChild(dot);
           }
-          dotContainer.children[0].classList.add('active');
       }
   
-      // Mouse and touch events
+      // Update active dot
+      function updateDots(index) {
+          const dots = dotContainer.querySelectorAll('.dot');
+          dots.forEach((dot, i) => {
+              dot.classList.toggle('active', i === index);
+          });
+      }
+  
+      // Start dragging
       function onDragStart(e) {
           isDragging = true;
           startX = getPositionX(e);
-          slideWrapper.style.transition = "none";
+          slideWrapper.style.transition = "none"; // Disable snapping during drag
           animationId = requestAnimationFrame(animation);
       }
   
+      // Dragging in progress
+      function onDragMove(e) {
+          if (!isDragging) return;
+          const currentPosition = getPositionX(e);
+          currentTranslate = prevTranslate + currentPosition - startX;
+      }
+  
+      // End dragging
       function onDragEnd() {
           isDragging = false;
           cancelAnimationFrame(animationId);
   
+          // Calculate slide movement
+          const slideWidth = slideWrapper.offsetWidth;
           const movedBy = currentTranslate - prevTranslate;
-          if (movedBy < -100) {
-              nextSlide();
-          } else if (movedBy > 100) {
-              prevSlide();
-          } else {
-              showSlide(activeIndex);
+  
+          if (movedBy < -slideWidth / 4 && currentSlide < totalSlides - 1) {
+              currentSlide++;
+          } else if (movedBy > slideWidth / 4 && currentSlide > 0) {
+              currentSlide--;
           }
+  
+          showSlide(currentSlide);
+          prevTranslate = -currentSlide * slideWidth; // Update translate value
       }
   
-      function onDragMove(e) {
-          if (isDragging) {
-              const currentPosition = getPositionX(e);
-              currentTranslate = prevTranslate + currentPosition - startX;
-          }
-      }
-  
+      // Get touch or mouse X position
       function getPositionX(e) {
           return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
       }
   
+      // Animation for smooth dragging
       function animation() {
           slideWrapper.style.transform = `translateX(${currentTranslate}px)`;
           if (isDragging) requestAnimationFrame(animation);
       }
   
-      function nextSlide() {
-          if (activeIndex < totalSlides - 1) {
-              activeIndex++;
-              showSlide(activeIndex);
-          }
-      }
-  
-      function prevSlide() {
-          if (activeIndex > 0) {
-              activeIndex--;
-              showSlide(activeIndex);
-          }
-      }
-  
-      // Event listeners
+      // Event listeners for touch and mouse
       slideWrapper.addEventListener('mousedown', onDragStart);
       slideWrapper.addEventListener('touchstart', onDragStart);
       slideWrapper.addEventListener('mousemove', onDragMove);
@@ -439,12 +435,8 @@
           if (isDragging) onDragEnd();
       });
   
-      // Prevent default scrolling behavior on touch
-      slideWrapper.addEventListener('touchstart', (e) => e.preventDefault());
-  
-      // Create dot indicators and show the first slide
-      createDots();
-      showSlide(currentSlide);
+      // Initialize carousel
+      initCarousel();
   </script>
   
 </div>
